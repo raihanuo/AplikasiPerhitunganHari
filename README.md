@@ -32,7 +32,8 @@ Aplikasi Perhitungan Hari adalah sebuah program berbasis Java Swing yang memungk
 - Memberikan informasi yang jelas mengenai hari pertama, hari terakhir, dan jarak hari antara dua tanggal.
 
 ## Screenshot
-_Akan ditambahkan nanti_
+![7](https://github.com/user-attachments/assets/0785d477-c34a-49d5-b745-30559c424ab1)
+![7_](https://github.com/user-attachments/assets/34e37f37-e232-4e90-8976-22b5e3139416)
 
 ## Cara Menjalankan Program
 1. Pastikan Anda memiliki **Java Development Kit (JDK)** terinstal di sistem Anda.
