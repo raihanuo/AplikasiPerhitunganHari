@@ -1,6 +1,6 @@
 # Aplikasi Perhitungan Hari
 
-Aplikasi Perhitungan Hari adalah sebuah program berbasis Java Swing yang memungkinkan pengguna untuk menghitung jumlah hari dalam sebuah bulan serta menghitung jarak hari antara dua tanggal.
+Aplikasi ini adalah program Java berbasis GUI yang memungkinkan pengguna untuk menghitung jumlah hari dalam sebuah bulan serta menghitung jarak hari antara dua tanggal.
 
 ## Identitas
 - Nama  : Muhammad Raihan
@@ -8,10 +8,9 @@ Aplikasi Perhitungan Hari adalah sebuah program berbasis Java Swing yang memungk
 - Kelas : 5B NonReg Banjarmasin
 
 ## Fitur
-- Menampilkan jumlah hari dalam bulan yang dipilih.
-- Menampilkan hari pertama dan hari terakhir dari bulan tersebut.
-- Menghitung jarak hari antara dua tanggal yang dipilih.
-- Antarmuka pengguna yang sederhana dan mudah digunakan.
+- **Jumlah Hari**: Menampilkan jumlah hari dalam bulan yang dipilih.
+- **Hari dalam Bulan**: Menampilkan hari pertama dan hari terakhir dari bulan tersebut.
+- **Jarak Hari**: Menghitung jarak hari antara dua tanggal yang dipilih.
 
 ## Cara Menggunakan
 1. Pilih bulan dari dropdown "Pilih Bulan".
@@ -21,10 +20,9 @@ Aplikasi Perhitungan Hari adalah sebuah program berbasis Java Swing yang memungk
 5. Hasil akan ditampilkan di area teks di bawah tombol.
 
 ## Teknologi yang Digunakan
-- Java
-- Java Swing untuk antarmuka pengguna
-- `java.time` package untuk pengolahan tanggal
-- `com.toedter.calendar.JCalendar` untuk komponen kalender
+- **Java**: Bahasa pemrograman untuk mengembangkan aplikasi.
+- **Swing**: Framework GUI untuk membangun antarmuka pengguna.
+- **Library JCalendar**: jcalendar-1.4.jar untuk menggunakan komponen jCalendar
 
 ## Keunggulan
 - Mudah digunakan dengan antarmuka grafis yang intuitif.
