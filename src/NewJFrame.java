@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,13 +11,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JSpinner;
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -152,6 +150,7 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Mengubah nama hari dari enum DayOfWeek menjadi nama hari dalam Bahasa Indonesia
     private String ubahHari(DayOfWeek dayOfWeek) {
         switch (dayOfWeek) {
             case MONDAY:    return "Senin";
@@ -161,38 +160,46 @@ public class NewJFrame extends javax.swing.JFrame {
             case FRIDAY:    return "Jumat";
             case SATURDAY:  return "Sabtu";
             case SUNDAY:    return "Minggu";
-            default:       return "";
+            default:       return ""; // Mengembalikan string kosong untuk input yang tidak dikenali
         }
     }
     
-    private void buttonHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHitungActionPerformed
-        Calendar calendar = Calendar.getInstance();
-            calendar.setTime((Date) spinnerTahun.getValue());
-        
-        String bulan = (String) comboBoxBulan.getSelectedItem();
-        int bulanKe = comboBoxBulan.getSelectedIndex() + 1,
-            tahun = calendar.get(Calendar.YEAR);
-        YearMonth tahunBulan = YearMonth.of(tahun, bulanKe);
-        int jumlahHari = tahunBulan.lengthOfMonth();
-        
+    private void hitung() {
+        Calendar calendar = Calendar.getInstance(); // Mendapatkan instance Calendar saat ini
+        calendar.setTime((Date) spinnerTahun.getValue()); // Mengatur kalender dengan tahun yang dipilih dari spinner
+
+        String bulan = (String) comboBoxBulan.getSelectedItem(); // Mengambil bulan yang dipilih dari comboBox
+        int bulanKe = comboBoxBulan.getSelectedIndex() + 1, // Mendapatkan indeks bulan yang dipilih (1-12)
+            tahun = calendar.get(Calendar.YEAR); // Mendapatkan tahun dari kalender
+        YearMonth tahunBulan = YearMonth.of(tahun, bulanKe); // Membuat YearMonth untuk tahun dan bulan yang dipilih
+        int jumlahHari = tahunBulan.lengthOfMonth(); // Menghitung jumlah hari dalam bulan tersebut
+
+        // Mendapatkan tanggal hari pertama dan terakhir dalam bulan yang dipilih
         LocalDate hariPertama = LocalDate.of(tahun, bulanKe, 1),
             hariTerakhir = LocalDate.of(tahun, bulanKe, jumlahHari);
-        Date awal = calendarAwal.getDate(),
-            akhir = calendarAkhir.getDate();
-        
-        long millisecDiff = Math.abs(akhir.getTime() - awal.getTime());
-        long jarakHari = TimeUnit.DAYS.convert(millisecDiff, TimeUnit.MILLISECONDS);
-        
+        Date awal = calendarAwal.getDate(), // Mendapatkan tanggal awal dari komponen kalender
+            akhir = calendarAkhir.getDate(); // Mendapatkan tanggal akhir dari komponen kalender
+
+        // Menghitung selisih hari antara tanggal awal dan akhir
+        long millisecDiff = Math.abs(akhir.getTime() - awal.getTime()); // Menghitung selisih dalam milidetik
+        long jarakHari = TimeUnit.DAYS.convert(millisecDiff, TimeUnit.MILLISECONDS); // Mengonversi selisih milidetik ke hari
+
+        // Menyusun pesan hasil yang akan ditampilkan
         String a = "Jumlah Hari pada " + bulan + " " + tahun + " adalah " + jumlahHari,
-            b = "Hari Pertama : " + ubahHari(hariPertama.getDayOfWeek()),
-            c = "Hari Terakhir : " + ubahHari(hariTerakhir.getDayOfWeek()),
-            d = "Jarak Hari : " + jarakHari;
-        
+            b = "Hari Pertama : " + ubahHari(hariPertama.getDayOfWeek()), // Mengonversi hari pertama ke nama hari
+            c = "Hari Terakhir : " + ubahHari(hariTerakhir.getDayOfWeek()), // Mengonversi hari terakhir ke nama hari
+            d = "Jarak Hari : " + jarakHari; // Menyusun jarak hari
+
+        // Menampilkan hasil di text area
         textAreaHasil.setText(a + "\n" + b + "\n" + c + "\n" + d + "\n");
+    }
+    
+    private void buttonHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHitungActionPerformed
+        hitung(); // Memanggil metode hitung saat tombol ditekan
     }//GEN-LAST:event_buttonHitungActionPerformed
 
     private void spinnerTahunStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinnerTahunStateChanged
-        buttonHitung.doClick();
+        hitung(); // Memanggil metode hitung saat nilai spinner berubah
     }//GEN-LAST:event_spinnerTahunStateChanged
 
     /**
